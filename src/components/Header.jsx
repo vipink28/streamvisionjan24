@@ -8,14 +8,14 @@ import VideoPlayer from './VideoPlayer';
 import { Link } from 'react-router-dom';
 
 function Header(props) {
-    const { video } = props;
+    const { video, streamType } = props;
     const dispatch = useDispatch();
     const { status, data, error } = useSelector(selectHeaderDetails);
     const [showPlayer, setShowPlayer] = useState(false);
 
     useEffect(() => {
         if (video) {
-            dispatch(fetchHeaderDetails(video.id))
+            dispatch(fetchHeaderDetails({ type: streamType, id: video.id }))
         }
     }, [video])
 

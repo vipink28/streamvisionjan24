@@ -6,7 +6,7 @@ import { fetchPopularShows, selectPopularShows } from '../features/tv/tvSlice';
 import Card from './Card';
 
 function Row(props) {
-    const { action, selector, title } = props;
+    const { action, selector, title, streamType } = props;
 
     const popularShows = useSelector(selector);
     const collection = popularShows.data?.results;
@@ -25,7 +25,7 @@ function Row(props) {
                 {
                     collection?.map((video) => (
                         <SwiperSlide key={video?.id}>
-                            <Card video={video} />
+                            <Card video={video} streamType={streamType} />
                         </SwiperSlide>
                     ))
                 }

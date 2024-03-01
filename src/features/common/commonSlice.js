@@ -17,8 +17,8 @@ const initialState = {
 
 export const fetchHeaderDetails = createAsyncThunk(
     'common/fetchHeaderDetails',
-    async (id) => {
-        const response = await axios.get(requests.getDetails('tv', id));
+    async (data) => {
+        const response = await axios.get(requests.getDetails(data.type, data.id));
         return response.data;
     }
 )

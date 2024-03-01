@@ -18,7 +18,7 @@ function Homescreen(props) {
         <>
             {
                 status === "success" ?
-                    <Header video={data.results[Math.floor(Math.random() * 20)]} />
+                    <Header video={data.results[Math.floor(Math.random() * 20)]} streamType={platform.tv} />
                     : <div>No Data</div>
             }
             <div className='container-fluid'>

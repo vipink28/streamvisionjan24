@@ -18,7 +18,7 @@ function VideoPlayer(props) {
     }, [videos])
 
     return (
-        <div class="ratio ratio-16x9 youtube-player vh-100">
+        <div class="ratio ratio-16x9 youtube-player">
             <iframe src={`https://www.youtube.com/embed/${trailer?.key}?rel=0&mute=1&autoplay=1`} title="YouTube video" allowFullScreen></iframe>
         </div>
     );

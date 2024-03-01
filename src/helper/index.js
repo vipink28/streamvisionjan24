@@ -9,5 +9,6 @@ export const truncateText = (str = "", limit) => {
 }
 
 export const showYear = (dateString) => {
-
+    let myDate = new Date(dateString);
+    return myDate.getFullYear();
 }
