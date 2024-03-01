@@ -5,6 +5,7 @@ import Ratings from './Ratings';
 import { truncateText } from '../helper';
 import GenreLinks from './GenreLinks';
 import VideoPlayer from './VideoPlayer';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
     const { video } = props;
@@ -36,7 +37,7 @@ function Header(props) {
                             <GenreLinks genres={data?.genres} />
                             <Ratings voteAverage={data?.vote_average} voteCount={data?.vote_count} />
                             <button className='btn btn-danger' onClick={handlePlay}>Play Trailer</button>
-                            <button className='btn btn-info ms-2'>More Info</button>
+                            <Link to={`/details/tv/${data?.id}`} className='btn btn-info ms-2'>More Info</Link>
                         </div>
                         <div className='header-vignette'></div>
                         <div className='header-bottom-vignette'></div>
