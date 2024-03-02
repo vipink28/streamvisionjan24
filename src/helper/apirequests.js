@@ -5,7 +5,7 @@ export const requests = {
     getCollection: (streamType, endpoint) => `${streamType}/${endpoint}?api_key=${API_KEY}&language=en-US&page=1`,
     getDetails: (streamType, id) => `${streamType}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`,
     getGenres: (streamType) => `genre/${streamType}/list?api_key=${API_KEY}`,
-
+    getVideoByGenre: (streamType, genreId) => `/discover/${streamType}?api_key=${API_KEY}&with_genres=${genreId}&language=en-US`,
 }
 
 

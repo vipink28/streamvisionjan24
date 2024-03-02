@@ -12,7 +12,7 @@ function Header(props) {
     const dispatch = useDispatch();
     const { status, data, error } = useSelector(selectHeaderDetails);
     const [showPlayer, setShowPlayer] = useState(false);
-
+    console.log(video);
     useEffect(() => {
         if (video) {
             dispatch(fetchHeaderDetails({ type: streamType, id: video.id }))
@@ -34,7 +34,7 @@ function Header(props) {
                             <h2 className='title display-3'>{truncateText(data?.name || data?.original_name || data?.title || data?.original_title, 35)}</h2>
                             <h3 className='display-5 text-warning tagline'>{data?.tagline}</h3>
                             <p className='lead'>{truncateText(data?.overview, 180)}</p>
-                            <GenreLinks genres={data?.genres} />
+                            <GenreLinks genres={data?.genres} streamType={streamType} />
                             <Ratings voteAverage={data?.vote_average} voteCount={data?.vote_count} />
                             <button className='btn btn-danger' onClick={handlePlay}>Play Trailer</button>
                             <Link to={`/details/tv/${data?.id}`} className='btn btn-info ms-2'>More Info</Link>

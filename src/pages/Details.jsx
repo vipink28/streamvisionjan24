@@ -38,7 +38,7 @@ function Details(props) {
                     </div>
 
                     <Ratings voteCount={data?.vote_count} voteAverage={data?.vote_average} />
-                    <GenreLinks genres={data?.genres} />
+                    <GenreLinks genres={data?.genres} streamType={type} />
                     <p>Production Companies: {
                         data?.production_companies.map((comp) => (
                             <span>{comp?.name} </span>

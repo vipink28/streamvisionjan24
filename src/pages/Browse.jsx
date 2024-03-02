@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { fetchNowPlayingMovies, selectNowPlayingMovies } from '../features/movie/movieSlice';
 import axios from '../helper/axios';
 import Row from '../components/Row';
+import { shuffle } from '../helper';
 
 function Browse(props) {
     const { type } = useParams();
@@ -18,7 +19,7 @@ function Browse(props) {
 
     const fetchGenreList = async (type) => {
         const response = await axios.get(requests.getGenres(type));
-        setGenreList(response.data.genres);
+        setGenreList(shuffle(response.data.genres));
     }
 
     useEffect(() => {
@@ -43,8 +44,16 @@ function Browse(props) {
                     <Header video={data.results[Math.floor(Math.random() * 20)]} streamType={type} />
                     : <div>No Data</div>
             }
-
-            {/* <Row title="abc" action="" selector="" /> */}
+            <div className='container-fluid'>
+                {
+                    genreList ?
+                        genreList?.map((genre, index) => (
+                            index < 6 ?
+                                <Row title={genre?.name} isGenre={true} genre={genre} streamType={type} /> : ""
+                        ))
+                        : ""
+                }
+            </div>
         </div>
     );
 }

@@ -20,6 +20,9 @@ function Navbar(props) {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/browse/movie">Movies</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/browsebygenre/movie/28">Browse By Genre</NavLink>
+                        </li>
                         <li className="nav-item dropdown">
                             <NavLink className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Dropdown
