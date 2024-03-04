@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchVideoDetails, selectVideoDetails } from '../features/common/commonSlice';
@@ -6,13 +6,14 @@ import VideoPlayer from '../components/VideoPlayer';
 import { showYear } from '../helper';
 import Ratings from '../components/Ratings';
 import GenreLinks from '../components/GenreLinks';
+import Card from '../components/Card';
+import Seasons from '../components/Seasons';
 
 function Details(props) {
     const { type, id } = useParams();
     const dispatch = useDispatch();
     const { status, data, error } = useSelector(selectVideoDetails);
 
-    console.log(data);
 
     useEffect(() => {
         if (type && id) {
@@ -46,7 +47,26 @@ function Details(props) {
                     } </p>
                     <p className='lead'>{data?.overview}</p>
 
+
+                    <div className='row py-5 gy-4'>
+                        <div className='col-lg-12'>
+                            <h3>Recommeded {type === "tv" ? "Shows" : "Movies"}</h3>
+                        </div>
+                        {
+                            data?.recommendations.results.length > 0 ?
+                                data?.recommendations.results.map((video, index) => (
+                                    index < 6 ?
+                                        <div className='col-lg-4'>
+                                            <Card video={video} streamType={type} />
+                                        </div> : ""
+                                )) : ""
+                        }
+                    </div>
                 </div>
+            </div>
+
+            <div className='py-5'>
+                <Seasons seasons={data?.seasons} seriesid={data?.id} />
             </div>
         </div>
     );
